@@ -14,21 +14,23 @@ function createCharacterDivs (arrayData) {
   const numOfCharacters = arrayData.length;
   for(i=0; i<numOfCharacters; i++ ){
     let currentChar = arrayData[i];
+
     let charImg = $('<img>');
+    charImg.attr('class', 'charImg');
     charImg.attr('src', arrayData[i].photoUrl);
 
     let charDiv = $('<div>');
     charDiv.attr('class', "character");
     charDiv.attr("charId", currentChar._id);
-    charDiv.append(charImg);
 
-    let charInfo = $('<p>').text(
-      `Name: ${currentChar.name} \n 
-      Enemies: ${currentChar.enemies} \n 
-      Allies: ${currentChar.allies}`
-    );
+    let charInfo = $('<div>').attr('class', "characterInfo");
+    charInfo.append(`<p>Name: ${currentChar.name}</p>`);
+    charInfo.append(`<p>Enemies: ${currentChar.enemies}</p>`);
+    charInfo.append(`<p>Allies: ${currentChar.allies}</p>`);
+    
+    charDiv.append(charImg);
+    charDiv.append(charInfo);
     
     charBox.append(charDiv);
-    charBox.append(charInfo);
   };
 };

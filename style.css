@@ -1,0 +1,10 @@
+.character {
+  max-width: 300px;
+  max-height: 400px;
+}
+
+.charImg {
+  height: 200px;
+  width: 200px;
+  object-fit: cover;
+}
