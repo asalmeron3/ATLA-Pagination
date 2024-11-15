@@ -1,12 +1,18 @@
-function setUpPagination(numOfItemsToDisplay, className, pageNum) {
-  const itemsPerPage = numOfItemsToDisplay;
-  let currentPage = 0; 
-
+function setUpPagination(className, pageNum) {
   let items = $(`.${className}`);
-  const startIndex = currentPage * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  let itemsPerPage = 4;
 
-  $.each(items, (index, item) => {
+  const numPages = Math.ceil(items.length/itemsPerPage);
+  const startIndex = pageNum * itemsPerPage;
+  const endIndex = startIndex + itemsPerPage;
+  
+  makePageButtons(numPages);
+  makePages(items, startIndex, endIndex);
+
+};
+
+function makePages(listOfItems, startIndex, endIndex) {
+  $.each(listOfItems, (index, item) => {
     item.classList.toggle('hidden', index < startIndex || index >= endIndex);
   });
-};
+}

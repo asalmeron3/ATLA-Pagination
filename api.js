@@ -7,12 +7,13 @@ function getCharacters(query) {
   }).done(function(apiData){
     createCharacterDivs(apiData);
   }).then(function(event){
-    setUpPagination(4, 'character', 0);
+    setUpPagination("character",0);
   });
 };
 
 function createCharacterDivs (arrayData) {
   let charBox = $(".character-box");
+  charBox.empty();
   const numOfCharacters = arrayData.length;
   for(i=0; i<numOfCharacters; i++ ){
     let currentChar = arrayData[i];
