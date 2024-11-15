@@ -6,6 +6,8 @@ function getCharacters(query) {
     method: "GET"
   }).done(function(apiData){
     createCharacterDivs(apiData);
+  }).then(function(event){
+    setUpPagination(4, 'character', 0);
   });
 };
 
@@ -20,7 +22,7 @@ function createCharacterDivs (arrayData) {
     charImg.attr('src', arrayData[i].photoUrl);
 
     let charDiv = $('<div>');
-    charDiv.attr('class', "character");
+    charDiv.addClass("character", "hidden");
     charDiv.attr("charId", currentChar._id);
 
     let charInfo = $('<div>').attr('class', "characterInfo");
@@ -30,7 +32,7 @@ function createCharacterDivs (arrayData) {
     
     charDiv.append(charImg);
     charDiv.append(charInfo);
-    
+
     charBox.append(charDiv);
   };
 };
