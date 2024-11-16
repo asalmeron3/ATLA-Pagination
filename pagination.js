@@ -2,17 +2,17 @@ function setUpPagination(className, pageNum) {
   let items = $(`.${className}`);
   let itemsPerPage = 4;
 
-  const numPages = Math.ceil(items.length/itemsPerPage);
-  const startIndex = pageNum * itemsPerPage;
-  const endIndex = startIndex + itemsPerPage;
+  numPages = Math.ceil(items.length/itemsPerPage);
+  firstIndex = pageNum * itemsPerPage;
+  lastIndex = firstIndex + itemsPerPage;
   
-  makePageButtons(numPages);
-  makePages(items, startIndex, endIndex);
+  makePageButtons(numPages, pageNum);
+  makePages(items, firstIndex, lastIndex);
 
 };
 
-function makePages(listOfItems, startIndex, endIndex) {
+function makePages(listOfItems, firstIndex, lastIndex) {
   $.each(listOfItems, (index, item) => {
-    item.classList.toggle('hidden', index < startIndex || index >= endIndex);
+    item.classList.toggle('hidden', index < firstIndex || index >= lastIndex);
   });
 }

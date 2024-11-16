@@ -7,33 +7,6 @@ function getCharacters(query) {
   }).done(function(apiData){
     createCharacterDivs(apiData);
   }).then(function(event){
-    setUpPagination("character",0);
+    setUpPagination("character",startIndex);
   });
-};
-
-function createCharacterDivs (arrayData) {
-  let charBox = $(".character-box");
-  charBox.empty();
-  const numOfCharacters = arrayData.length;
-  for(i=0; i<numOfCharacters; i++ ){
-    let currentChar = arrayData[i];
-
-    let charImg = $('<img>');
-    charImg.attr('class', 'charImg');
-    charImg.attr('src', arrayData[i].photoUrl);
-
-    let charDiv = $('<div>');
-    charDiv.addClass("character", "hidden");
-    charDiv.attr("charId", currentChar._id);
-
-    let charInfo = $('<div>').attr('class', "characterInfo");
-    charInfo.append(`<p>Name: ${currentChar.name}</p>`);
-    charInfo.append(`<p>Enemies: ${currentChar.enemies}</p>`);
-    charInfo.append(`<p>Allies: ${currentChar.allies}</p>`);
-    
-    charDiv.append(charImg);
-    charDiv.append(charInfo);
-
-    charBox.append(charDiv);
-  };
 };
