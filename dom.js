@@ -82,7 +82,7 @@ function updateDomPageNum(changeType) {
       domPageNum = 0;
     }
   } else if(changeType == "back"){
-    if(domPageNum > startIndex + 1) {
+    if(domPageNum > startIndex) {
       domPageNum--;
     } else {
       domPageNum = numPages - 1;
